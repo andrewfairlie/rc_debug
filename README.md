@@ -26,6 +26,3 @@ Because the output is quite long, please add your output to something like Githu
 
 ## Example Output
 See "example.md"
-
-## Changelog
-Added an "include" parameter so it's less spammy
