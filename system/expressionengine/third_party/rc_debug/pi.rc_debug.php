@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $plugin_info = array(
 'pi_name'         => 'RC Debug',
-'pi_version'      => '1.1',
+'pi_version'      => '1.11',
 'pi_author'       => 'Red Carrot',
 'pi_author_url'   => 'http://redcarrot.co.uk/',
 'pi_description'  => 'Returns markdown formatted output to help the Stack Exchangers debug your EE problems'
@@ -35,7 +35,7 @@ class Rc_debug {
     
     $toShow = explode('|',$include);
     
-    $this->return_data  = "----------\n# Red Carrot Debug Output \n\n";
+    $this->return_data  = "# Red Carrot Debug Output \n\n";
     
     if(in_array("installation",$toShow)){ $this->return_data .= $this->getInstallationData(); }
     if(in_array("accesories",$toShow)){ $this->return_data .= $this->getAccessories(); }
