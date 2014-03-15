@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $plugin_info = array(
 'pi_name'         => 'RC Debug',
-'pi_version'      => '1.1.3',
+'pi_version'      => '1.1.4',
 'pi_author'       => 'Red Carrot',
 'pi_author_url'   => 'http://redcarrot.co.uk/',
 'pi_description'  => 'Returns markdown formatted output to help the Stack Exchangers debug your EE problems'
@@ -120,7 +120,7 @@ class Rc_debug {
         $tr .= "- **". $extension['class'] ." / ". $extension['method'] ."**\n";
         $tr .= "    - **ID:** ". $extension['extension_id']."\n";
         $tr .= "    - **Priority:** ". $extension['priority']."\n";
-        $tr .= "    - **Hook:** ". $extension['hook']."\n";
+        $tr .= "    - **Hook:** `". $extension['hook']."`\n";
         $tr .= "    - **Enabled:** ". $extension['enabled']."\n";
         $tr .= "    - **Version:** ". $extension['version']."\n";
       }
@@ -166,7 +166,7 @@ class Rc_debug {
       {
         $tr .= "- **". $row['channel_title'] ."**\n";
         $tr .= "    - **ID:** ". $row['channel_id']."\n";
-        $tr .= "    - **Name:** ". $row['channel_name']."\n";
+        $tr .= "    - **Name:** `". $row['channel_name']."`\n";
         $tr .= "    - **Category Group ID:** ". $row['cat_group']."\n";
         $tr .= "    - **Status Group ID:** ". $row['status_group']."\n";
         $tr .= "    - **Default Status:** ". $row['deft_status']."\n";
@@ -180,7 +180,7 @@ class Rc_debug {
         foreach($fields->result_array() as $field){
           $tr .= "        - **Label:** ". $field['field_label'] ."\n";
           $tr .= "            - **ID:** ". $field['field_id'] ."\n";
-          $tr .= "            - **Name:** ". $field['field_name'] ."\n";
+          $tr .= "            - **Name:** `". $field['field_name'] ."`\n";
           $tr .= "            - **Type:** ". $field['field_type'] ."\n";
           $tr .= "            - **Required:** ". $field['field_required'] ."\n";
           $tr .= "            - **Searchable:** ". $field['field_search'] ."\n";
@@ -212,7 +212,7 @@ class Rc_debug {
                             ->get();
         
         foreach($statuses->result_array() as $status){
-          $tr .= "    - **Name:** ". $status['status']."\n";
+          $tr .= "    - **Name:** `". $status['status']."`\n";
         }
 
       }
@@ -235,7 +235,7 @@ class Rc_debug {
     {
       foreach($templateGroups->result_array() as $row)
       {
-        $tr .= "- **". $row['group_name'] ."**\n";
+        $tr .= "- `". $row['group_name'] ."`\n";
         $tr .= "    - **Site Default:** ". $row['is_site_default']."\n";
         $tr .= "    - **ID:** ". $row['group_id']."\n";
         $tr .= "    - **Templates**\n";
@@ -247,7 +247,7 @@ class Rc_debug {
                             ->get();
 
         foreach($templates->result_array() as $template){
-          $tr .= "        - **Name:** ". $template['template_name'] ."\n";
+          $tr .= "        - **Name:** `". $template['template_name'] ."`\n";
           $tr .= "            - **ID:** ". $template['template_id'] ."\n";
           $tr .= "            - **Saved:** ". $template['save_template_file'] ."\n";
           $tr .= "            - **Type:** ". $template['template_type'] ."\n";
@@ -279,7 +279,7 @@ class Rc_debug {
       foreach($results->result_array() as $row)
       {
         $tr .= "- **Template ID:** ". $row['template_id']."\n";
-        $tr .= "    - **Configured Route:** ". $row['route']."\n";
+        $tr .= "    - **Configured Route:** `". $row['route']."`\n";
       }
     } else {
       $tr .= "No template routes";
