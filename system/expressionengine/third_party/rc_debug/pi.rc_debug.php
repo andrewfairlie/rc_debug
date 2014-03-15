@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $plugin_info = array(
 'pi_name'         => 'RC Debug',
-'pi_version'      => '1.11',
+'pi_version'      => '1.1.2',
 'pi_author'       => 'Red Carrot',
 'pi_author_url'   => 'http://redcarrot.co.uk/',
 'pi_description'  => 'Returns markdown formatted output to help the Stack Exchangers debug your EE problems'
@@ -117,7 +117,7 @@ class Rc_debug {
     {
       foreach($extensions->result_array() as $extension)
       {
-        $tr .= "- **". $extension['class'] ." / ". $extension['method'] ." **\n";
+        $tr .= "- **". $extension['class'] ." / ". $extension['method'] ."**\n";
         $tr .= "    - **ID:** ". $extension['extension_id']."\n";
         $tr .= "    - **Priority:** ". $extension['priority']."\n";
         $tr .= "    - **Hook:** ". $extension['hook']."\n";
