@@ -21,3 +21,8 @@ An ExpressionEngine plugin that outputs useful data to help folks on StackExchan
 
 ## Etiquette
 I propose that people add the output of their  `{exp:rc_debug}` to the bottom of their questions on Stack Exchange. The markdown generates a horizontal line which will separate their question and their debug output.
+
+
+
+## Example Output
+See "example.md"
