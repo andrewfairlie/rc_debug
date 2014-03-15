@@ -13,7 +13,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $plugin_info = array(
 'pi_name'         => 'RC Debug',
-'pi_version'      => '1.0',
+'pi_version'      => '1.1',
 'pi_author'       => 'Red Carrot',
 'pi_author_url'   => 'http://redcarrot.co.uk/',
 'pi_description'  => 'Returns markdown formatted output to help the Stack Exchangers debug your EE problems'
@@ -25,16 +25,27 @@ class Rc_debug {
   public function __construct()
   {
     $this->EE =& get_instance();
+    
+    $include = ee()->TMPL->fetch_param('include');
+    
+    // If not set, show everything
+    if($include==""){
+      $include = "installation|accessories|extensions|fieldtypes|modules|channels|templates|template_routes|status_groups";
+    }
+    
+    $toShow = explode('|',$include);
+    
     $this->return_data  = "----------\n# Red Carrot Debug Output \n\n";
-    $this->return_data .= $this->getInstallationData();
-    $this->return_data .= $this->getAccessories();
-    $this->return_data .= $this->getExtensions();
-    $this->return_data .= $this->getFieldTypes();
-    $this->return_data .= $this->getModules();
-    $this->return_data .= $this->getChannels();
-    $this->return_data .= $this->getTemplates();
-    $this->return_data .= $this->getTemplateRoutes();
-    $this->return_data .= $this->getStatusGroups();
+    
+    if(in_array("installation",$toShow)){ $this->return_data .= $this->getInstallationData(); }
+    if(in_array("accesories",$toShow)){ $this->return_data .= $this->getAccessories(); }
+    if(in_array("extensions",$toShow)){ $this->return_data .= $this->getExtensions(); }
+    if(in_array("fieldtypes",$toShow)){ $this->return_data .= $this->getFieldTypes(); }
+    if(in_array("modules",$toShow)){ $this->return_data .= $this->getModules(); }
+    if(in_array("channels",$toShow)){ $this->return_data .= $this->getChannels(); }
+    if(in_array("templates",$toShow)){ $this->return_data .= $this->getTemplates(); }
+    if(in_array("template_routes",$toShow)){ $this->return_data .= $this->getTemplateRoutes(); }
+    if(in_array("status_groups",$toShow)){ $this->return_data .= $this->getStatusGroups(); }
   }
   
   
